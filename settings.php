@@ -8,29 +8,32 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package   Bank Indonesia
  * @author    Reynaldi Arya
  * @category  Checkout Page
- * @copyright Copyright (c) 2021, Walter Pinem, Reynaldi Arya
+ * @copyright Copyright (c) 2021, Reynaldi Arya
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  **/
 
 /**
  * Add an option on Advanced tab setting panel
  **/
+
 add_filter( 'woocommerce_get_sections_advanced', 'bank_indonesia_add_section' );
 function bank_indonesia_add_section( $sections ) {
 	
 	$sections['paymentcode'] = __( 'Kode Pembayaran', 'bank-indonesia' );
-	return $sections;
-	
+	return $sections;	
 }
+
 /**
  * Add settings to the specific section we created before
  */
+
 add_filter( 'woocommerce_get_settings_advanced', 'paymentcode_all_settings', 10, 2 );
 function paymentcode_all_settings( $settings, $current_section ) {
 	
 	/**
 	 * Check the current section is what we want
 	 **/
+
 	if ( $current_section == 'paymentcode' ) {
 		$settings_paymentcode = array();
 		// Add Title to the Settings

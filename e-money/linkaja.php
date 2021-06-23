@@ -13,13 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 
 // Begin creating the bank function
-class WC_Gateway_BCA extends WC_Gateway_BACS {
+class WC_Gateway_linkaja extends WC_Gateway_BACS {
 	function __construct() {
-		$this->id = "bank_bca";
-		$this->method_title = __( "Bank BCA", 'woocommerce' );
-		$this->method_description = __( "Pembayaran melalui BCA", 'woocommerce' );
-		$this->title = __( "Transfer Bank BCA", 'woocommerce' );
-		$this->icon = plugins_url( 'assets/logo-bca.png',__FILE__);
+		$this->id = "linkaja";
+		$this->method_title = __( "LinkAja", 'woocommerce' );
+		$this->method_description = __( "Pembayaran melalui LinkAja", 'woocommerce' );
+		$this->title = __( "Transfer LinkAja", 'woocommerce' );
+		$this->icon = plugins_url( 'assets/logo-linkaja.png',__FILE__);
 		$this->has_fields = false;
 		$this->init_form_fields();
 		$this->init_settings();
@@ -32,11 +32,11 @@ class WC_Gateway_BCA extends WC_Gateway_BACS {
          add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'save_account_details' ) );
          $this -> generate_account_details_html();
      }
-     add_action( 'woocommerce_thankyou_bank_bca', array( $this, 'thankyou_page' ) );
+     add_action( 'woocommerce_thankyou_linkaja', array( $this, 'thankyou_page' ) );
      add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
 
     // BACS account fields shown on the thanks page and in emails
-     $this->account_details = get_option( 'woocommerce_bank_bca_accounts',
+     $this->account_details = get_option( 'woocommerce_linkaja_accounts',
         array(
             array(
                 'account_name'   => $this->get_option( 'account_name' ),
@@ -56,7 +56,7 @@ class WC_Gateway_BCA extends WC_Gateway_BACS {
     $this->form_fields = array(
         'enabled' => array(
             'title'     => __( 'Enable / Disable', 'woocommerce' ),
-            'label'     => __( 'Enable <strong>Bank BCA</strong> Transfer Payment Method', 'woocommerce' ),
+            'label'     => __( 'Enable <strong>LinkAja</strong> Transfer Payment Method', 'woocommerce' ),
             'type'      => 'checkbox',
             'default'   => 'yes',
         ),
@@ -64,7 +64,7 @@ class WC_Gateway_BCA extends WC_Gateway_BACS {
             'title'     => __( 'Title', 'woocommerce' ),
             'type'      => 'text',
             'desc_tip'  => __( 'Ini mengatur judul yang dilihat konsumen saat membayar', 'woocommerce' ),
-            'default'   => __( 'Transfer Bank BCA', 'woocommerce' ),
+            'default'   => __( 'Transfer LinkAja', 'woocommerce' ),
         ),
         'description' => array(
             'title'     => __( 'Description', 'woocommerce' ),
@@ -116,7 +116,7 @@ public function save_account_details() {
         }
     }
 
-    update_option( 'woocommerce_bank_bca_accounts', $accounts );
+    update_option( 'woocommerce_linkaja_accounts', $accounts );
 
 }
 
@@ -136,7 +136,7 @@ private function bank_details( $order_id = '' ) {
     // Get sortcode label in the $locale array and use appropriate one
     $sortcode = isset( $locale[ $country ]['sortcode']['label'] ) ? $locale[ $country ]['sortcode']['label'] : __( 'Sort Code', 'woocommerce' );
 
-    echo '<strong><h2>' . __( 'Detail Rekening Bank untuk Memproses Pembayaran:', 'woocommerce' ) . '</h2></strong>' . PHP_EOL;
+    echo '<strong><h2>' . __( 'Detail Rekening E-Money untuk Memproses Pembayaran:', 'woocommerce' ) . '</h2></strong>' . PHP_EOL;
 
     $bacs_accounts = apply_filters( 'woocommerce_bacs_accounts', $this->account_details );
 
@@ -196,7 +196,7 @@ public function process_payment( $order_id ) {
     $order = wc_get_order( $order_id );
 
     // Mark as on-hold (we're awaiting the payment)
-    $order->update_status( 'on-hold', __( 'Menunggu Pembayaran melalui Bank BCA', 'woocommerce' ) );
+    $order->update_status( 'on-hold', __( 'Menunggu Pembayaran melalui LinkAja', 'woocommerce' ) );
 
     // Reduce stock levels
     $order->reduce_order_stock();
@@ -215,7 +215,7 @@ public function process_payment( $order_id ) {
 // Email Instructions
 public function email_instructions( $order, $sent_to_admin, $plain_text = false ) {
 
-    if ( ! $sent_to_admin && 'bank_bca' === $order->payment_method && $order->has_status( 'on-hold' ) ) {
+    if ( ! $sent_to_admin && 'linkaja' === $order->payment_method && $order->has_status( 'on-hold' ) ) {
         if ( $this->instructions ) {
             echo wpautop( wptexturize( $this->instructions ) ) . PHP_EOL;
         }
