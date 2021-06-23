@@ -32,7 +32,7 @@ Available Banks
 3. Configure the plugin methods as you wish
 
 == Changelog ==
-= 1.3.0 - June 23, 2021 =
+= 1.4.0 - June 23, 2021 =
 * Add LinkAja
 
 = 1.2.0 - June 18, 2021 =
