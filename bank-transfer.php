@@ -5,19 +5,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* @wordpress-plugin
- * Plugin Name: 		Bank Indonesia for WooCommerce
- * Plugin URI: 			https://ibest.id
- * Description: 		Kumpulan bank Indonesia untuk gateway pembayaran offline di eCommerce yang mendukung WooCommerce. Plugin ini memungkinkan pemilik eCommerce untuk mengatur gateway pembayaran offline menggunakan bank Indonesia melalui transfer bank ke pelanggan mereka.
- * Version: 			1.4.0
- * Author: 			Reynaldi Arya
- * Author URI: 			https://ibest.id
- * Domain Path:			/languages
+ * Plugin Name: 			Bank Indonesia for WooCommerce
+ * Plugin URI: 				https://ibest.id
+ * Description: 			Kumpulan bank Indonesia untuk gateway pembayaran offline di eCommerce yang mendukung WooCommerce. Plugin ini memungkinkan pemilik eCommerce untuk mengatur gateway pembayaran offline menggunakan bank Indonesia melalui transfer bank ke pelanggan mereka.
+ * Version: 				1.5.0
+ * Author: 					Reynaldi Arya
+ * Author URI: 				https://ibest.id
+ * Domain Path:				/languages
  * Requires at least: 		4.1
- * Tested up to: 		5.7.2
+ * Tested up to: 			5.7.2
  * WC requires at least: 	3.0.0
  * WC tested up to: 		5.4.1
- * License: 			GNU General Public License v3.0
- * License URI: 		http://www.gnu.org/licenses/gpl-3.0.html
+ * License: 				GNU General Public License v3.0
+ * License URI: 			http://www.gnu.org/licenses/gpl-3.0.html
  */
 
 // Make sure we don't expose any info if called directly

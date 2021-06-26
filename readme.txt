@@ -1,10 +1,10 @@
 === Bank Indonesia for WooCommerce ===
-Contributors: reynaldiarya
+Contributors: reynaldiarya, gagassurya19
 Plugin Name: Bank Indonesia for WooCommerce
 Tags: payment, woocommerce, bank indonesia
 Requires at least: 4.1
 Tested up to: 5.7.2
-Stable tag: 1.3.0
+Stable tag: 1.5.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,6 +32,9 @@ Available Banks
 3. Configure the plugin methods as you wish
 
 == Changelog ==
+= 1.5.0 - June 26, 2021 =
+* Add Ikon pembayaran
+
 = 1.4.0 - June 23, 2021 =
 * Add LinkAja
 

@@ -17,9 +17,9 @@ class WC_Gateway_BRI extends WC_Gateway_BACS {
 	function __construct() {
 		$this->id = "bank_bri";
 		$this->method_title = __( "Bank BRI", 'woocommerce' );
-		$this->method_description = __( "Pembayaran melalui BRI", 'woocommerce' );
+		$this->method_description = __( "Pembayaran melalui Bank BRI", 'woocommerce' );
 		$this->title = __( "Transfer Bank BRI", 'woocommerce' );
-		$this->icon = plugins_url( 'assets/logo-bri.png',__FILE__);
+		$this->icon = $this->enable_icon = 'yes' === $this->get_option( 'enable_icon' ) ? plugins_url('assets/logo-bri.png',__FILE__) : null;
 		$this->has_fields = false;
 		$this->init_form_fields();
 		$this->init_settings();
@@ -58,13 +58,20 @@ class WC_Gateway_BRI extends WC_Gateway_BACS {
             'title'     => __( 'Enable / Disable', 'woocommerce' ),
             'label'     => __( 'Enable <strong>Bank BRI</strong> Transfer Payment Method', 'woocommerce' ),
             'type'      => 'checkbox',
-            'default'   => 'yes',
+            'default'   => 'no',
         ),
         'title' => array(
             'title'     => __( 'Title', 'woocommerce' ),
             'type'      => 'text',
             'desc_tip'  => __( 'Ini mengatur judul yang dilihat konsumen saat membayar', 'woocommerce' ),
             'default'   => __( 'Transfer Bank BRI', 'woocommerce' ),
+        ),
+        'enable_icon' => array(
+            'title' => __('Payment Icon', 'woocommerce'),
+            'label' => __('Enable Icon', 'woocommerce'),
+            'type' => 'checkbox',
+            'description' => '<img src="'.plugins_url('assets/logo-bri.png',__FILE__).'" style="height:100%;max-height:32px !important" />',
+            'default' => 'no',
         ),
         'description' => array(
             'title'     => __( 'Description', 'woocommerce' ),
@@ -76,7 +83,7 @@ class WC_Gateway_BRI extends WC_Gateway_BACS {
         'instructions' => array(
             'title'       => __( 'Instructions', 'woocommerce' ),
             'type'        => 'textarea',
-            'description' => __( 'Deskripsi metode pembayaran yang akan dilihat pelanggan di halaman checkout Anda.', 'woocommerce' ),
+            'description' => __( 'Instruksi yang akan ditambahkan ke halaman terima kasih dan email.', 'woocommerce' ),
             'default'     => '',
             'desc_tip'    => true,
         ),
