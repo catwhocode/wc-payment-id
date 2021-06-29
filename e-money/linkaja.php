@@ -67,8 +67,8 @@ class WC_Gateway_linkaja extends WC_Gateway_BACS {
             'default'   => __( 'Transfer LinkAja', 'woocommerce' ),
         ),
         'enable_icon' => array(
-            'title' => __('Payment Icon', 'woocommerce'),
-            'label' => __('Enable Icon', 'woocommerce'),
+            'title' => __('Ikon Pembayaran', 'woocommerce'),
+            'label' => __('Enable Ikon', 'woocommerce'),
             'type' => 'checkbox',
             'description' => '<img src="'.plugins_url('assets/logo-linkaja.png',__FILE__).'" style="height:100%;max-height:32px !important" />',
             'default' => 'no',
