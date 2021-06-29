@@ -67,8 +67,8 @@ class WC_Gateway_Mandiri extends WC_Gateway_BACS {
             'default'   => __( 'Transfer Bank Mandiri', 'woocommerce' ),
         ),
         'enable_icon' => array(
-            'title' => __('Payment Icon', 'woocommerce'),
-            'label' => __('Enable Icon', 'woocommerce'),
+            'title' => __('Ikon Pembayaran', 'woocommerce'),
+            'label' => __('Enable Ikon', 'woocommerce'),
             'type' => 'checkbox',
             'description' => '<img src="'.plugins_url('assets/logo-mandiri.png',__FILE__).'" style="height:100%;max-height:32px !important" />',
             'default' => 'no',
