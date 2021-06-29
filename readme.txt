@@ -1,26 +1,30 @@
-=== Bank Indonesia for WooCommerce ===
-Contributors: reynaldiarya, gagassurya19
-Plugin Name: Bank Indonesia for WooCommerce
+=== Bank dan e-Money Indonesia Payment Gateway WooCommerce ===
+Contributors: reynaldiarya
+Plugin Name: Bank dan e-Money Indonesia Payment Gateway WooCommerce
 Tags: payment, woocommerce, bank indonesia
 Requires at least: 4.1
 Tested up to: 5.7.2
-Stable tag: 1.5.0
+Stable tag: 1.8.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Offline payment methods using Indonesian banks via bank transfer.
-
 == Description ==
-
-Indonesian Banks: Get your WooCommerce-powered online store ready for Indonesian market
-
-Indonesian Banks plugin consists of a collection of Indonesian banks for offline payment methods on WooCommerce-enabled online store. This plugin allows online store owner to set offline payment methods using Indonesian banks via bank transfer to their customers.
+** Bank dan e-Money Indonesia Payment Gateway WooCommerce **
+The WooCommerce Bank and e-Money Indonesia Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments. WooCommerce default provides only 1 bank transfer payment gateway for all your bank accounts. This plugin provides several Indonesian banks and e-Money (BCA, BNI, Mandiri, BRI, Jago, Dana, LinkAja, and many others) as payment methods for checkout at WooCommerce. There is a payment icon that can be activated and deactivated. In addition, there is a payment code to make it easier to check the transfer of consumer funds in the seller's account. A 3-digit (random) payment code is added to the total spending automatically.
 
 Available Banks
 * Bank BCA
 * Bank BNI
 * Bank BRI
 * Bank Mandiri
+* Bank Jago
+* Bank Neo Commerce
+* Digibank
+* Citibank
+* HSBC
+* Bank OCBC NISP
+* Bank CIMB Niaga
+* Jenius
 * OVO
 * GoPay
 * Dana
@@ -32,11 +36,21 @@ Available Banks
 3. Configure the plugin methods as you wish
 
 == Changelog ==
+= 1.8.0 - June 27, 2021 =
+* Add Pembayaran Bank Jago
+* Add Pembayaran Bank Neo Commerce
+* Add Pembayaran Digibank
+* Add Pembayaran Citibank
+* Add Pembayaran HSBC
+* Add Pembayaran Bank OCBC NISP
+* Add Pembayaran Bank CIMB Niaga
+* Add Pembayaran Jenius
+
 = 1.5.0 - June 26, 2021 =
 * Add Ikon pembayaran
 
 = 1.4.0 - June 23, 2021 =
-* Add LinkAja
+* Add Pembayaran LinkAja
 
 = 1.2.0 - June 18, 2021 =
 * Fixed Bug
