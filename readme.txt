@@ -1,6 +1,6 @@
-=== Bank dan e-Money Indonesia Payment Gateway WooCommerce ===
+=== iBest Bank and e-Money Indonesian Payment Gateway WooCommerce ===
 Contributors: reynaldiarya
-Plugin Name: Bank dan e-Money Indonesia Payment Gateway WooCommerce
+Plugin Name: iBest Bank and e-Money Indonesian Payment Gateway WooCommerce
 Tags: payment, woocommerce, bank indonesia
 Requires at least: 4.1
 Tested up to: 5.7.2
@@ -9,7 +9,7 @@ License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
-** Bank dan e-Money Indonesia Payment Gateway WooCommerce **
+** iBest Bank and e-Money Indonesian Payment Gateway WooCommerce **
 The WooCommerce Bank and e-Money Indonesia Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments. WooCommerce default provides only 1 bank transfer payment gateway for all your bank accounts. This plugin provides several Indonesian banks and e-Money (BCA, BNI, Mandiri, BRI, Jago, Dana, LinkAja, and many others) as payment methods for checkout at WooCommerce. There is a payment icon that can be activated and deactivated. In addition, there is a payment code to make it easier to check the transfer of consumer funds in the seller's account. A 3-digit (random) payment code is added to the total spending automatically.
 
 Available Banks

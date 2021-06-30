@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* @wordpress-plugin
- * Plugin Name: 			Bank dan e-Money Indonesia Payment Gateway WooCommerce
+ * Plugin Name: 			iBest Bank and e-Money Indonesian Payment Gateway WooCommerce
  * Plugin URI: 				https://toko.ibest.id
- * Description: 			The WooCommerce Bank and e-Money Indonesia Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments. There is a payment code to make it easier to check the transfer of consumer funds in the seller's account. A 3-digit (random) payment code is added to the total spending automatically.
+ * Description: 			The WooCommerce Bank and e-Money Indonesian Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments. There is a payment code to make it easier to check the transfer of consumer funds in the seller's account. A 3-digit (random) payment code is added to the total spending automatically.
  * Version: 				1.8.0
  * Author: 					Reynaldi Arya
  * Author URI: 				https://ibest.id
