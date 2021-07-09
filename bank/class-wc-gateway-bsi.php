@@ -12,13 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  **/
 
-// Begin creating the bank function
+// Constructor for the gateway
 class WC_Gateway_BSI extends WC_Gateway_BACS {
 	function __construct() {
-		$this->id = "bsi";
-		$this->method_title = __( "Bank Syariah Indonesia", 'woocommerce' );
-		$this->method_description = __( "Pembayaran melalui Bank Syariah Indonesia", 'woocommerce' );
-		$this->title = __( "Transfer Bank Syariah Indonesia", 'woocommerce' );
+		$this->id = "bank_bsi";
+		$this->method_title = __( "Bank BSI", 'woocommerce' );
+		$this->method_description = __( "Pembayaran melalui Bank BSI", 'woocommerce' );
+		$this->title = __( "Transfer Bank BSI", 'woocommerce' );
         $this->icon = $this->enable_icon = 'yes' === $this->get_option( 'enable_icon' ) ? plugins_url('assets/logo-bsi.png',__FILE__) : null;
 		$this->has_fields = false;
 		$this->init_form_fields();
@@ -32,12 +32,12 @@ class WC_Gateway_BSI extends WC_Gateway_BACS {
         add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'save_account_details' ) );
         $this -> generate_account_details_html();
     }
-    add_action( 'woocommerce_thankyou_bsi', array( $this, 'thankyou_page' ) );
+    add_action( 'woocommerce_thankyou_bank_bsi', array( $this, 'thankyou_page' ) );
     add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
      
 
     // BACS account fields shown on the thanks page and in emails
-     $this->account_details = get_option( 'woocommerce_bsi_accounts',
+     $this->account_details = get_option( 'woocommerce_bank_bsi_accounts',
         array(
             array(
                 'account_name'   => $this->get_option( 'account_name' ),
@@ -52,12 +52,12 @@ class WC_Gateway_BSI extends WC_Gateway_BACS {
 
  }
 
-// Build the setting fields
+// Initialise Gateway Settings Form Fields
  public function init_form_fields() {
     $this->form_fields = array(
         'enabled' => array(
             'title'     => __( 'Enable / Disable', 'woocommerce' ),
-            'label'     => __( 'Enable <strong>Bank Syariah Indonesia</strong> Transfer Payment Method', 'woocommerce' ),
+            'label'     => __( 'Enable <strong>Bank BSI</strong> Transfer Payment Method', 'woocommerce' ),
             'type'      => 'checkbox',
             'default'   => 'no',
         ),
@@ -65,7 +65,7 @@ class WC_Gateway_BSI extends WC_Gateway_BACS {
             'title'     => __( 'Title', 'woocommerce' ),
             'type'      => 'text',
             'desc_tip'  => __( 'Ini mengatur judul yang dilihat konsumen saat membayar', 'woocommerce' ),
-            'default'   => __( 'Transfer Bank Syariah Indonesia', 'woocommerce' ),
+            'default'   => __( 'Transfer Bank BSI', 'woocommerce' ),
         ),
         'enable_icon' => array(
             'title'         => __('Ikon Pembayaran', 'woocommerce'),
@@ -94,7 +94,7 @@ class WC_Gateway_BSI extends WC_Gateway_BACS {
     );      
 }	
 
-// Saving
+// Save account details table
 public function save_account_details() {
     
     $accounts = array();
@@ -126,10 +126,11 @@ public function save_account_details() {
         }
     }
     
-    update_option( 'woocommerce_bsi_accounts', $accounts );
+    update_option( 'woocommerce_bank_bsi_accounts', $accounts );
 
 }
 
+// Get bank details and place into a list format
 private function bank_details( $order_id = '' ) {
 
     if ( empty( $this->account_details ) ) {
@@ -148,7 +149,7 @@ private function bank_details( $order_id = '' ) {
 
     echo '<strong><h2>' . __( 'Detail Rekening Bank untuk Memproses Pembayaran:', 'woocommerce' ) . '</h2></strong>' . PHP_EOL;
 
-    $bacs_accounts = apply_filters( 'woocommerce_bacs_accounts', $this->account_details );
+    $bacs_accounts = apply_filters( 'woocommerce_bacs_accounts', $this->account_details, $order_id );
 
     if ( ! empty( $bacs_accounts ) ) {
 
@@ -184,7 +185,7 @@ private function bank_details( $order_id = '' ) {
 
             foreach ( $account_fields as $field_key => $field ) {
                     if ( ! empty( $field['value'] ) ) {
-                        echo '<li class="' . esc_attr( $field_key ) . '">' . esc_attr( $field['label'] ) . ': <strong>' . wptexturize( $field['value'] ) . '</strong></li>' . PHP_EOL;
+                        echo '<li class="' . esc_attr( $field_key ) . '">' . wp_kses_post( $field['label'] ) . ': <strong>' . wp_kses_post( wptexturize( $field['value'] ) ). '</strong></li>' . PHP_EOL;
                     }
                 }
 
@@ -194,20 +195,22 @@ private function bank_details( $order_id = '' ) {
 
 }
 
-// Instruction on Thank You page   
+// Output for the order received page
 public function thankyou_page( $order_id ) {
     if ( $this->instructions ) {
         echo '<h3>Instruksi Pembayaran</h3>';
-        echo wpautop( wptexturize( wp_kses_post( $this->instructions ) ) );
+        echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
     }
     $this->bank_details( $order_id );
 }
+
+// Process the payment and return the result
 public function process_payment( $order_id ) {
 
     $order = wc_get_order( $order_id );
     
     // Mark as on-hold (we're awaiting the payment)
-    $order->update_status( 'on-hold', __( 'Menunggu Pembayaran melalui Bank Syariah Indonesia', 'woocommerce' ) );
+    $order->update_status( 'on-hold', __( 'Menunggu Pembayaran melalui Bank BSI', 'woocommerce' ) );
 
     // Reduce stock levels
     $order->reduce_order_stock();
@@ -226,7 +229,7 @@ public function process_payment( $order_id ) {
 // Email Instructions
 public function email_instructions( $order, $sent_to_admin, $plain_text = false ) {
 
-    if ( ! $sent_to_admin && 'bsi' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
+    if ( ! $sent_to_admin && 'bank_bsi' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
         if ( $this->instructions ) {
             echo wp_kses_post( wpautop( wptexturize( $this->instructions ) ) . PHP_EOL );
         }

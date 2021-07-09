@@ -5,7 +5,7 @@ Donate: https://paypal.me/reynaldiaryaa
 Tags: woocommerce, bank indonesia, woocommerce payment, indonesian banks, checkout, payment, payment method indonesia, BCA, BNI, Mandiri, BRI, Jenius, bank, bank transfer, payment gateway
 Requires at least: 4.1
 Tested up to: 5.7.2
-Stable tag: 2.0.0
+Stable tag: 2.0.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,9 @@ Available Banks
 3. Configure the plugin methods as you wish
 
 == Changelog ==
+= 2.0.1 - July 07, 2021 =
+* Improve Security
+
 = 2.0.0 - July 06, 2021 =
 * Add Pembayaran Bank Danamon
 * Add Pembayaran Bank Tabungan Negara

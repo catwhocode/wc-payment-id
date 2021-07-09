@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0
  **/
 
-// Begin creating the bank function
+// Constructor for the gateway
 class WC_Gateway_OVO extends WC_Gateway_BACS {
 	function __construct() {
 		$this->id = "ovo";
@@ -52,7 +52,7 @@ class WC_Gateway_OVO extends WC_Gateway_BACS {
 
  }
 
-// Build the setting fields
+// Initialise Gateway Settings Form Fields
  public function init_form_fields() {
     $this->form_fields = array(
         'enabled' => array(
@@ -94,9 +94,9 @@ class WC_Gateway_OVO extends WC_Gateway_BACS {
     );      
 }	
 
-// Saving
+// Save account details table
 public function save_account_details() {
-
+    
     $accounts = array();
 
     if ( isset( $_POST['bacs_account_name'] ) && ! current_user_can( 'manage_woocommerce' ) ) {
@@ -130,6 +130,7 @@ public function save_account_details() {
 
 }
 
+// Get bank details and place into a list format
 private function bank_details( $order_id = '' ) {
 
     if ( empty( $this->account_details ) ) {
@@ -148,7 +149,7 @@ private function bank_details( $order_id = '' ) {
 
     echo '<strong><h2>' . __( 'Detail Rekening Bank untuk Memproses Pembayaran:', 'woocommerce' ) . '</h2></strong>' . PHP_EOL;
 
-    $bacs_accounts = apply_filters( 'woocommerce_bacs_accounts', $this->account_details );
+    $bacs_accounts = apply_filters( 'woocommerce_bacs_accounts', $this->account_details, $order_id );
 
     if ( ! empty( $bacs_accounts ) ) {
 
@@ -184,7 +185,7 @@ private function bank_details( $order_id = '' ) {
 
             foreach ( $account_fields as $field_key => $field ) {
                     if ( ! empty( $field['value'] ) ) {
-                        echo '<li class="' . esc_attr( $field_key ) . '">' . esc_attr( $field['label'] ) . ': <strong>' . wptexturize( $field['value'] ) . '</strong></li>' . PHP_EOL;
+                        echo '<li class="' . esc_attr( $field_key ) . '">' . wp_kses_post( $field['label'] ) . ': <strong>' . wp_kses_post( wptexturize( $field['value'] ) ). '</strong></li>' . PHP_EOL;
                     }
                 }
 
@@ -194,14 +195,16 @@ private function bank_details( $order_id = '' ) {
 
 }
 
-// Instruction on Thank You page   
+// Output for the order received page
 public function thankyou_page( $order_id ) {
     if ( $this->instructions ) {
         echo '<h3>Instruksi Pembayaran</h3>';
-        echo wpautop( wptexturize( wp_kses_post( $this->instructions ) ) );
+        echo wp_kses_post( wpautop( wptexturize( wp_kses_post( $this->instructions ) ) ) );
     }
     $this->bank_details( $order_id );
 }
+
+// Process the payment and return the result
 public function process_payment( $order_id ) {
 
     $order = wc_get_order( $order_id );
