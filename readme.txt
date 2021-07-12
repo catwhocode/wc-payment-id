@@ -4,8 +4,8 @@ Plugin Name: iBestPay - Bank dan e-Money Indonesia
 Donate: https://paypal.me/reynaldiaryaa
 Tags: woocommerce, bank indonesia, woocommerce payment, indonesian banks, checkout, payment, payment method indonesia, BCA, BNI, Mandiri, BRI, Jenius, bank, bank transfer, payment gateway
 Requires at least: 4.1
-Tested up to: 5.7.2
-Stable tag: 2.0.1
+Tested up to: 5.8.0
+Stable tag: 2.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,7 @@ Available Banks
 * Bank Tabungan Negara
 * Bank Syariah Indonesia
 * Bank Permata
+* Bank Muamalat
 * Jenius
 * OVO
 * GoPay
@@ -36,11 +37,16 @@ Available Banks
 * LinkAja
 
 == Installation ==
-1. Upload the .zip file with the WordPress plugin manager
-2. Activate the desired payment methods through WooCommerce settings => Checkout tab
-3. Configure the plugin methods as you wish
+1. Upload the .zip file with the WordPress plugin manager and activate the Plugin
+2. Activate the desired payment methods through WooCommerce settings => Payments tab
+3. Enable payment code via WooCommerce settings => Advanced tab => Kode Pembayaran section
+4. Configure the plugin methods as you wish
 
 == Changelog ==
+= 2.2.0 - July 12, 2021 =
+* Add Angka Minimum and Maximum Kode Unik Pembayaran untuk Diacak
+* Add Bank Muamalat
+
 = 2.0.1 - July 07, 2021 =
 * Improve Security
 
