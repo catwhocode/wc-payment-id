@@ -6,16 +6,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /* @wordpress-plugin
  * Plugin Name: 			iBestPay - Bank dan e-Money Indonesia
- * Plugin URI: 				https://toko.ibest.id
+ * Plugin URI: 				https://wordpress.org/plugins/toko-ibest-bank-indonesia-for-woocommerce
  * Description: 			The WooCommerce Bank and e-Money Indonesia Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments.
- * Version: 				2.2.0
+ * Version: 				2.3.0
  * Author: 					Reynaldi Arya
  * Author URI: 				https://ibest.id
  * Domain Path:				/languages
  * Requires at least: 		4.1
  * Tested up to: 			5.8.0
  * WC requires at least: 	3.0.0
- * WC tested up to: 		5.4.1
+ * WC tested up to: 		5.5.2
  * License: 				GNU General Public License v3.0
  * License URI: 			http://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -28,6 +28,10 @@ function beipgw_init() {
 	if ( ! class_exists( 'WC_Payment_Gateway' ) ) {
 		return;
 	}
+
+/**
+ * Add an option on Payments setting panel
+ **/
 
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-bni.php';
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-bca.php';
@@ -46,6 +50,8 @@ function beipgw_init() {
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-permata.php';
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-ocbc-nisp.php';
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-muamalat.php';
+	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-tmrw.php';
+	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-line-bank.php';
 	require_once dirname( __FILE__ ) . '/e-money/class-wc-gateway-ovo.php';
 	require_once dirname( __FILE__ ) . '/e-money/class-wc-gateway-gopay.php';
 	require_once dirname( __FILE__ ) . '/e-money/class-wc-gateway-dana.php';
@@ -71,6 +77,8 @@ function add_beipgw_gateway( $methods ) {
 	$methods[] = 'WC_Gateway_Permata';
 	$methods[] = 'WC_Gateway_OCBC_NISP';
 	$methods[] = 'WC_Gateway_Muamalat';
+	$methods[] = 'WC_Gateway_TMRW';
+	$methods[] = 'WC_Gateway_Line_Bank';
 	$methods[] = 'WC_Gateway_GoPay';
 	$methods[] = 'WC_Gateway_OVO';	
 	$methods[] = 'WC_Gateway_Dana';
@@ -78,7 +86,6 @@ function add_beipgw_gateway( $methods ) {
 	
 	return $methods;
 }
-
 
 /**
  * Add an option on Advanced tab setting panel

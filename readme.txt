@@ -1,11 +1,10 @@
 === iBestPay - Bank dan e-Money Indonesia ===
 Contributors: reynaldiarya
 Plugin Name: iBestPay - Bank dan e-Money Indonesia
-Donate: https://paypal.me/reynaldiaryaa
 Tags: woocommerce, bank indonesia, woocommerce payment, indonesian banks, checkout, payment, payment method indonesia, BCA, BNI, Mandiri, BRI, Jenius, bank, bank transfer, payment gateway
 Requires at least: 4.1
 Tested up to: 5.8.0
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,6 +22,8 @@ Available Banks
 * Digibank
 * Citibank
 * HSBC
+* TMRW
+* Line Bank
 * Bank OCBC NISP
 * Bank CIMB Niaga
 * Bank Danamon
@@ -43,9 +44,13 @@ Available Banks
 4. Configure the plugin methods as you wish
 
 == Changelog ==
+= 2.3.0 - July 26, 2021 =
+* Add Pembayaran TMRW
+* Add Pembayaran Line Bank
+
 = 2.2.0 - July 12, 2021 =
 * Add Angka Minimum and Maximum Kode Unik Pembayaran untuk Diacak
-* Add Bank Muamalat
+* Add Pembayaran Bank Muamalat
 
 = 2.0.1 - July 07, 2021 =
 * Improve Security
