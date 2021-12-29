@@ -5,8 +5,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * @package   iBestPay - Bank dan e-Money Indonesia
- * @author    iBest
+ * @package   RAPay - Bank dan e-Money Indonesia
+ * @author    Reynaldi Arya
  * @category  Checkout Page
  * @copyright Copyright (c) 2021
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License v3.0

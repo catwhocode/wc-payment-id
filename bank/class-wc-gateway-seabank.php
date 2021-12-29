@@ -13,13 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  **/
 
 // Constructor for the gateway
-class WC_Gateway_Muamalat extends WC_Gateway_BACS {
+class WC_Gateway_Seabank extends WC_Gateway_BACS {
 	function __construct() {
-		$this->id = "bank_muamalat";
-		$this->method_title = __( "Bank Muamalat", 'woocommerce' );
-		$this->method_description = __( "Pembayaran melalui Bank Muamalat", 'woocommerce' );
-		$this->title = __( "Transfer Bank Muamalat", 'woocommerce' );
-        $this->icon = $this->enable_icon = 'yes' === $this->get_option( 'enable_icon' ) ? plugins_url('assets/logo-muamalat.png',__FILE__) : null;
+		$this->id = "bank_seabank";
+		$this->method_title = __( "Bank Seabank", 'woocommerce' );
+		$this->method_description = __( "Pembayaran melalui Bank Seabank", 'woocommerce' );
+		$this->title = __( "Transfer Bank Seabank", 'woocommerce' );
+        $this->icon = $this->enable_icon = 'yes' === $this->get_option( 'enable_icon' ) ? plugins_url('assets/logo-seabank.png',__FILE__) : null;
 		$this->has_fields = false;
 		$this->init_form_fields();
 		$this->init_settings();
@@ -32,12 +32,12 @@ class WC_Gateway_Muamalat extends WC_Gateway_BACS {
         add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'save_account_details' ) );
         $this -> generate_account_details_html();
     }
-    add_action( 'woocommerce_thankyou_bank_muamalat', array( $this, 'thankyou_page' ) );
+    add_action( 'woocommerce_thankyou_bank_seabank', array( $this, 'thankyou_page' ) );
     add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
      
 
     // BACS account fields shown on the thanks page and in emails
-     $this->account_details = get_option( 'woocommerce_bank_muamalat_accounts',
+     $this->account_details = get_option( 'woocommerce_bank_seabank_accounts',
         array(
             array(
                 'account_name'   => $this->get_option( 'account_name' ),
@@ -57,7 +57,7 @@ class WC_Gateway_Muamalat extends WC_Gateway_BACS {
     $this->form_fields = array(
         'enabled' => array(
             'title'     => __( 'Enable / Disable', 'woocommerce' ),
-            'label'     => __( 'Enable <strong>Bank Muamalat</strong> Transfer Payment Method', 'woocommerce' ),
+            'label'     => __( 'Enable <strong>Bank Seabank</strong> Transfer Payment Method', 'woocommerce' ),
             'type'      => 'checkbox',
             'default'   => 'no',
         ),
@@ -65,13 +65,13 @@ class WC_Gateway_Muamalat extends WC_Gateway_BACS {
             'title'     => __( 'Title', 'woocommerce' ),
             'type'      => 'text',
             'desc_tip'  => __( 'Ini mengatur judul yang dilihat konsumen saat membayar', 'woocommerce' ),
-            'default'   => __( 'Transfer Bank Muamalat', 'woocommerce' ),
+            'default'   => __( 'Transfer Bank Seabank', 'woocommerce' ),
         ),
         'enable_icon' => array(
             'title'         => __('Ikon Pembayaran', 'woocommerce'),
             'label'         => __('Enable Ikon', 'woocommerce'),
             'type'          => 'checkbox',
-            'description'   => '<img src="'.plugins_url('assets/logo-muamalat.png',__FILE__).'" style="height:100%;max-height:32px !important" />',
+            'description'   => '<img src="'.plugins_url('assets/logo-seabank.png',__FILE__).'" style="height:100%;max-height:32px !important" />',
             'default'       => 'no',
         ),
         'description' => array(
@@ -126,7 +126,7 @@ public function save_account_details() {
         }
     }
     
-    update_option( 'woocommerce_bank_muamalat_accounts', $accounts );
+    update_option( 'woocommerce_bank_seabank_accounts', $accounts );
 
 }
 
@@ -210,7 +210,7 @@ public function process_payment( $order_id ) {
     $order = wc_get_order( $order_id );
     
     // Mark as on-hold (we're awaiting the payment)
-    $order->update_status( 'on-hold', __( 'Menunggu Pembayaran melalui Bank Muamalat', 'woocommerce' ) );
+    $order->update_status( 'on-hold', __( 'Menunggu Pembayaran melalui Bank Seabank', 'woocommerce' ) );
 
     // Reduce stock levels
     $order->reduce_order_stock();
@@ -229,7 +229,7 @@ public function process_payment( $order_id ) {
 // Email Instructions
 public function email_instructions( $order, $sent_to_admin, $plain_text = false ) {
 
-    if ( ! $sent_to_admin && 'bank_muamalat' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
+    if ( ! $sent_to_admin && 'bank_seabank' === $order->get_payment_method() && $order->has_status( 'on-hold' ) ) {
         if ( $this->instructions ) {
             echo wp_kses_post( wpautop( wptexturize( $this->instructions ) ) . PHP_EOL );
         }

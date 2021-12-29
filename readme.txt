@@ -1,15 +1,15 @@
-=== iBestPay - Bank dan e-Money Indonesia ===
+=== RAPay - Bank dan e-Money Indonesia ===
 Contributors: reynaldiarya
-Plugin Name: iBestPay - Bank dan e-Money Indonesia
+Plugin Name: RAPay - Bank dan e-Money Indonesia
 Tags: woocommerce, bank indonesia, woocommerce payment, indonesian banks, checkout, payment, payment method indonesia, BCA, BNI, Mandiri, BRI, Jenius, bank, bank transfer, payment gateway
 Requires at least: 4.1
-Tested up to: 5.8.0
-Stable tag: 2.3.1
+Tested up to: 5.8.2
+Stable tag: 2.6.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 == Description ==
-** iBestPay - Bank dan e-Money Indonesia **
+** RAPay - Bank dan e-Money Indonesia **
 The WooCommerce Bank and e-Money Indonesia Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments. WooCommerce default provides only 1 bank transfer payment gateway for all your bank accounts. This plugin provides several Indonesian banks and e-Money (BCA, BNI, Mandiri, BRI, Jago, Dana, LinkAja, and many others) as payment methods for checkout at WooCommerce. There is a payment icon that can be activated and deactivated. In addition, there is a payment code to make it easier to check the transfer of consumer funds in the seller's account. A 3-digit (random) payment code is added to the total spending automatically.
 
 Available Banks
@@ -31,12 +31,12 @@ Available Banks
 * Bank Syariah Indonesia
 * Bank Permata
 * Bank Muamalat
+* Bank Seabank
 * Jenius
 * OVO
 * GoPay
 * Dana
 * LinkAja
-* ShopeePay
 
 == Installation ==
 1. Upload the .zip file with the WordPress plugin manager and activate the Plugin
@@ -45,8 +45,8 @@ Available Banks
 4. Configure the plugin methods as you wish
 
 == Changelog ==
-= 2.3.1 - August 24, 2021 =
-* Add Pembayaran ShopeePay
+= 2.5.0 - December 29, 2021 =
+* Add Pembayaran Seabank
 
 = 2.3.0 - July 26, 2021 =
 * Add Pembayaran TMRW
