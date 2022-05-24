@@ -8,14 +8,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin Name: 			RAPay - Bank dan e-Money Indonesia
  * Plugin URI: 				https://wordpress.org/plugins/toko-ibest-bank-indonesia-for-woocommerce
  * Description: 			The WooCommerce Bank and e-Money Indonesia Payment Gateway plugin consists of several collections of banks and e-Money in Indonesia for WooCommerce payments.
- * Version: 				2.6.0
+ * Version: 				2.7.0
  * Author: 					Reynaldi Arya
  * Author URI: 				https://reynaldiab.com
- * Domain Path:				/languages
  * Requires at least: 		4.1
- * Tested up to: 			5.8.2
+ * Tested up to: 			6.0.0
  * WC requires at least: 	3.0.0
- * WC tested up to: 		6.0.0
+ * WC tested up to: 		6.5.1
  * License: 				GNU General Public License v3.0
  * License URI: 			http://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -53,6 +52,7 @@ function beipgw_init() {
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-tmrw.php';
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-line-bank.php';
 	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-seabank.php';
+	require_once dirname( __FILE__ ) . '/bank/class-wc-gateway-allo-bank.php';
 	require_once dirname( __FILE__ ) . '/e-money/class-wc-gateway-ovo.php';
 	require_once dirname( __FILE__ ) . '/e-money/class-wc-gateway-gopay.php';
 	require_once dirname( __FILE__ ) . '/e-money/class-wc-gateway-dana.php';
@@ -81,6 +81,7 @@ function add_beipgw_gateway( $methods ) {
 	$methods[] = 'WC_Gateway_TMRW';
 	$methods[] = 'WC_Gateway_Line_Bank';
 	$methods[] = 'WC_Gateway_Seabank';
+	$methods[] = 'WC_Gateway_Allo_Bank';
 	$methods[] = 'WC_Gateway_GoPay';
 	$methods[] = 'WC_Gateway_OVO';	
 	$methods[] = 'WC_Gateway_Dana';

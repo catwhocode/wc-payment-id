@@ -3,8 +3,8 @@ Contributors: reynaldiarya
 Plugin Name: RAPay - Bank dan e-Money Indonesia
 Tags: woocommerce, bank indonesia, woocommerce payment, indonesian banks, checkout, payment, payment method indonesia, BCA, BNI, Mandiri, BRI, Jenius, bank, bank transfer, payment gateway
 Requires at least: 4.1
-Tested up to: 5.8.2
-Stable tag: 2.6.0
+Tested up to: 6.0.0
+Stable tag: 2.7.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,6 +24,7 @@ Available Banks
 * HSBC
 * TMRW
 * Line Bank
+* Allo Bank
 * Bank OCBC NISP
 * Bank CIMB Niaga
 * Bank Danamon
@@ -45,6 +46,9 @@ Available Banks
 4. Configure the plugin methods as you wish
 
 == Changelog ==
+= 2.7.0 - May 23, 2021 =
+* Add Pembayaran Allo Bank
+
 = 2.5.0 - December 29, 2021 =
 * Add Pembayaran Seabank
 
